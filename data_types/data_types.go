@@ -82,6 +82,16 @@ func main() {
 	fmt.Println("y3(uint32): ", y3)
 	fmt.Println("y4(uint64): ", y4)
 
+	var firstName = "Yaser"
+	var lastName = "Sharifi"
+	var email = "yassersharifi@74gmail.com"
+	fmt.Println()
+	fmt.Println("----------- String ----------")
+	fmt.Println("First Name is: ", firstName)
+	fmt.Println("Last Name is: ", lastName)
+	fmt.Println("Full Name is: ", firstName+" "+lastName)
+	fmt.Println("Email is: ", email)
+
 	/* Functions (توابع)
 	make, len, cap, new, append, copy, close,
 	delete, complex, real, imag, panic, recover
