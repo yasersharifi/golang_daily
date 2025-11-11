@@ -1,5 +1,4 @@
-```markdown
-# MinIO Go Demo
+# MinIO Go 
 
 A **single-file Go program** to interact with **MinIO** (S3-compatible storage).
 
@@ -108,9 +107,6 @@ Objects (after delete):
 - Retry on errors  
 - Secure credentials  
 - Enable bucket versioning  
-
----
-
 
 ---
 
