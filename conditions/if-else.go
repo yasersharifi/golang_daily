@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+// Condition Operators (&& , || , > , < , <= , => , !)
+
 func main() {
 	fmt.Println("-------------")
 	fmt.Println("Conditions in golang (if, else, else if)")
@@ -33,6 +35,44 @@ func main() {
 	isEven(num3)
 	fmt.Println()
 	isOdd(num3)
+
+	fmt.Println()
+
+	// if
+	a := 15
+	if a > 10 {
+		fmt.Println("a is greater than 10")
+	}
+
+	fmt.Println()
+
+	// &&
+	b := 6
+	if b > 0 && b < 10 {
+		fmt.Println("b is within range")
+	}
+
+	fmt.Println()
+
+	// else
+	c := 15
+	if c > 20 {
+		fmt.Println("c is greater than 20")
+	} else {
+		fmt.Println("c is less than 20")
+	}
+
+	fmt.Println()
+
+	// if, else if, else
+
+	fmt.Println()
+
+	// nested condition
+
+	fmt.Println()
+
+	// statement; condition
 
 }
 
