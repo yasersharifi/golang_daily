@@ -65,10 +65,20 @@ func main() {
 	fmt.Println()
 
 	// if, else if, else
+	a1 := 10
+	b1 := 15
+	if a1 > b1 {
+		fmt.Println("a1 is greater than b1")
+	} else if a1 < b1 {
+		fmt.Println("a1 is less than b1")
+	} else {
+		fmt.Println("a1 is equal b1")
+	}
 
 	fmt.Println()
 
 	// nested condition
+	
 
 	fmt.Println()
 
