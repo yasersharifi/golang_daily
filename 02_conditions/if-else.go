@@ -78,6 +78,16 @@ func main() {
 	fmt.Println()
 
 	// nested condition
+	x := 10
+	y := 20
+	z := 30
+	if x < y {
+		if x < z {
+			fmt.Println("x is less than y and z")
+		} else {
+			fmt.Println("x is less than y and greater than z")
+		}
+	}
 	
 
 	fmt.Println()
