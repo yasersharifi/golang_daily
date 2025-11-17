@@ -22,12 +22,12 @@ func main() {
 	fmt.Println()
 
 	// Last item
-	fmt.Println("Last item of arr: ", arr[len(arr) - 1])
+	fmt.Println("Last item of arr: ", arr[len(arr)-1])
 
 	// change the array items value
 	arr[0] = 10
 	arr[1] = 20
-	arr[len(arr) - 1] = 30
+	arr[len(arr)-1] = 30
 	fmt.Println("arr with new values: ", arr)
 
 	fmt.Println()
@@ -39,6 +39,14 @@ func main() {
 	// slice
 
 	// make
+	langs := make([]string, 3)
+	langs[0] = "C++"
+	langs[1] = "Go"
+	fmt.Println("Langs (by make): ", langs)
+	fmt.Println("Length of langs (by make): ", len(langs))
+	fmt.Println("Capacity of langs (by make): ", cap(langs))
+
+	fmt.Println()
 
 	// create a empty slice
 
