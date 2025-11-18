@@ -37,6 +37,16 @@ func main() {
 	// 2D array
 
 	// slice
+	slice := []string{"A", "B", "C"}
+	fmt.Println("Slice: ", slice)
+	fmt.Println("First item of Slice: ", slice[0])
+
+	// append to slice
+	slice = append(slice, "D")
+	slice = append(slice, "E")
+	fmt.Println("Slice with new items: ", slice)
+
+	fmt.Println()
 
 	// make
 	langs := make([]string, 3)
@@ -49,6 +59,8 @@ func main() {
 	fmt.Println()
 
 	// create a empty slice
+	emptySlice := []int{}
+	fmt.Println("Empty slice: ", emptySlice)
 
 	// Add item to slice
 
