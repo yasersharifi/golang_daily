@@ -88,11 +88,17 @@ func main() {
 			fmt.Println("x is less than y and greater than z")
 		}
 	}
-	
 
 	fmt.Println()
 
 	// statement; condition
+	if d := -10; d >= 0 {
+		fmt.Println("d is positive number")
+	} else {
+		fmt.Println("d is negative number")
+	}
+
+	fmt.Println()
 
 }
 
