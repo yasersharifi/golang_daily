@@ -41,10 +41,10 @@ func sum(a int, b int) int {
 // Multiple returns
 func division(a int, b int) (int, error) {
 	if b == 0 {
-		return 0, fmt.Errorf("b can't be zero");
+		return 0, fmt.Errorf("b can't be zero")
 	}
 	return a / b, nil
-	
+
 }
 
 // Named return value

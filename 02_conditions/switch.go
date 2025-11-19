@@ -46,7 +46,7 @@ func main() {
 
 	fmt.Println()
 
-	// fallthrough - 
+	// fallthrough -
 	dayOfWeek := 5
 
 	switch dayOfWeek {

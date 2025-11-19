@@ -63,16 +63,21 @@ func main() {
 	fmt.Println("Empty slice: ", emptySlice)
 
 	// Add item to slice
+	emptySlice = append(emptySlice, 10)
+	emptySlice = append(emptySlice, 30)
+	fmt.Println("New item in slice: ", emptySlice)
 
-	// append
+	// check a slice is nil (slice == nil)
+	var s []int
+	s2 := []int{}
+	fmt.Println("Check s is nil: ", s == nil)   // true
+	fmt.Println("Check s2 is nil: ", s2 == nil) // false
 
 	// remove item
 
 	// copy in slice
 
 	// sort
-
-	// check a slice is nill (slice == nil)
 
 	fmt.Println()
 	fmt.Println("End of array and slice")
