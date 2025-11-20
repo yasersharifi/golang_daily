@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func main() {
 	fmt.Println("--------------")
@@ -76,8 +79,24 @@ func main() {
 	// remove item
 
 	// copy in slice
+	src := []int{1, 3, 5, 7, 9}
+	dst := make([]int, len(src))
+	numberOfElementsCopied := copy(dst, src)
+	fmt.Println("Number of elements copied: ", numberOfElementsCopied)
+	fmt.Println("dst: ", dst)
 
 	// sort
+	intSlice := []int{10, 2, 5, -10, 0}
+	sort.Ints(intSlice)
+	fmt.Println("Sort of intSlice: ", intSlice)
+
+	float64Slice := []float64{10.2, 2.5, 5.1, -10.3, 0}
+	sort.Float64s(float64Slice)
+	fmt.Println("Sort of float64Slice: ", float64Slice)
+
+	stringSlice := []string{"Dec", "Jul", "Apr", "Jun"}
+	sort.Strings(stringSlice)
+	fmt.Println("Sort of stringSlice: ", stringSlice)
 
 	fmt.Println()
 	fmt.Println("End of array and slice")
