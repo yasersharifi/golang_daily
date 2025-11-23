@@ -60,5 +60,58 @@ func main() {
 		ctx.JSON(404, gin.H{"error": "task not found"})
 	})
 
+	r.PUT("/tasks/:id", func(ctx *gin.Context) {
+		idParam := ctx.Param("id")
+		id, err := strconv.Atoi(idParam)
+		if err != nil {
+			ctx.JSON(400, gin.H{"error": "invalid id"})
+			return
+		}
+
+		var updated Task
+		if err := ctx.ShouldBindJSON(&tasks); err != nil {
+			ctx.JSON(400, gin.H{"error": err.Error()})
+			return
+		}
+
+		for i, t := range tasks {
+			if t.ID == id {
+				 updated.ID = t.ID
+
+				 tasks[i] = updated
+				 ctx.JSON(200, updated)
+				 return
+			}
+		}
+
+		ctx.JSON(404, gin.H{"error": "task not found"})
+	})
+
+	r.DELETE("/tasks/:id", func(ctx *gin.Context) {
+		idParam := ctx.Param("id")
+		id, err := strconv.Atoi(idParam)
+		if err != nil {
+			ctx.JSON(400, gin.H{"error": "invalid id"})
+			return
+		}
+
+		if ctx.ShouldBindJSON(&tasks); err != nil {
+			ctx.JSON(400, gin.H{"error": err.Error()})
+			return
+		}
+
+		var deleted Task
+		for i, t := range tasks {
+			if t.ID == id {
+				deleted = t
+				// delete from arr
+				ctx.JSON(200, gin.H{"msg": "deleted", "data": deleted})
+				return
+			}
+		}
+
+		ctx.JSON(404, gin.H{"error": "task not found"})
+	})
+
 	r.Run(":9003")
 }
