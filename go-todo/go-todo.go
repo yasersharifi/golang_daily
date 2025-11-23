@@ -1,7 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"strconv"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -14,6 +16,8 @@ type Task struct {
 
 func main() {
 	r := gin.Default()
+
+	r.Use(TimeMiddleware(), MyLogger(), AuthMiddleware())
 
 	var tasks []Task
 
@@ -76,11 +80,11 @@ func main() {
 
 		for i, t := range tasks {
 			if t.ID == id {
-				 updated.ID = t.ID
+				updated.ID = t.ID
 
-				 tasks[i] = updated
-				 ctx.JSON(200, updated)
-				 return
+				tasks[i] = updated
+				ctx.JSON(200, updated)
+				return
 			}
 		}
 
@@ -105,6 +109,7 @@ func main() {
 			if t.ID == id {
 				deleted = t
 				// delete from arr
+				tasks = append(tasks[:i], tasks[i+1:]...)
 				ctx.JSON(200, gin.H{"msg": "deleted", "data": deleted})
 				return
 			}
@@ -114,4 +119,37 @@ func main() {
 	})
 
 	r.Run(":9003")
+}
+
+func TimeMiddleware() gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		start := time.Now()
+
+		ctx.Next()
+
+		duration := time.Since(start)
+		fmt.Println("Duration: ", duration)
+	}
+}
+
+func MyLogger() gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		fmt.Println("Path: ", ctx.Request.URL.Path)
+		ctx.Next()
+	}
+}
+
+func AuthMiddleware() gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		token := ctx.GetHeader("X-Token")
+
+		// Also check the token not expired
+		if token == "" {
+			ctx.JSON(401, gin.H{"error": "unauthorized"})
+			ctx.Abort()
+			return
+		}
+
+		ctx.Next()
+	}
 }
