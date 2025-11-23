@@ -7,9 +7,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-
-
-
 func main() {
 	r := gin.Default()
 
@@ -21,11 +18,8 @@ func main() {
 
 	api := r.Group("/api")
 	v1 := api.Group("/v1")
-	
+
 	routes.TaskRoutes(v1)
 
 	r.Run(":9003")
 }
-
-
-

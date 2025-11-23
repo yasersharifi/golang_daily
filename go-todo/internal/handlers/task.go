@@ -10,20 +10,23 @@ import (
 var Tasks = []models.Task{}
 
 func CreateTask(ctx *gin.Context) {
-	var newTask models.Task
+	var input models.TaskInput
 
-	if err := ctx.ShouldBindJSON(&newTask); err != nil {
+	if err := ctx.ShouldBindJSON(&input); err != nil {
 		ctx.JSON(400, gin.H{"error": err.Error()})
 		return
 	}
 
-	newTask.ID = len(Tasks) + 1
-	newTask.Title = "Test title" + strconv.Itoa(newTask.ID)
-	newTask.Description = "Test description" + strconv.Itoa(newTask.ID)
+	newTask := models.Task{
+		ID:          len(Tasks) + 1,
+		Title:       input.Title,
+		Description: input.Description,
+		Done:        input.Done,
+	}
 
 	Tasks = append(Tasks, newTask)
 
-	ctx.JSON(201, gin.H{"msg": "created", "data": newTask})
+	ctx.JSON(201, newTask)
 }
 
 func FindAllTasks(ctx *gin.Context) {
@@ -56,15 +59,20 @@ func UpdateTask(ctx *gin.Context) {
 		return
 	}
 
-	var updated models.Task
-	if err := ctx.ShouldBindJSON(&updated); err != nil {
+	var input models.TaskInput
+	if err := ctx.ShouldBindJSON(&input); err != nil {
 		ctx.JSON(400, gin.H{"error": err.Error()})
 		return
 	}
 
 	for i, t := range Tasks {
 		if t.ID == id {
-			updated.ID = t.ID
+			updated := models.Task{
+				ID:          t.ID,
+				Title:       input.Title,
+				Description: input.Description,
+				Done:        input.Done,
+			}
 			Tasks[i] = updated
 			ctx.JSON(200, updated)
 			return
@@ -81,7 +89,6 @@ func RemoveTask(ctx *gin.Context) {
 		ctx.JSON(400, gin.H{"error": "invalid id"})
 		return
 	}
-
 
 	for i, t := range Tasks {
 		if t.ID == id {
