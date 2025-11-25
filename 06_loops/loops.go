@@ -31,6 +31,8 @@ func main() {
 		fmt.Println()
 	}
 
+	// for-range in map
+
 	fmt.Println()
 	fmt.Println("End of loops in golang")
 	fmt.Println("-----------------")
