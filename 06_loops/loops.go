@@ -31,7 +31,17 @@ func main() {
 		fmt.Println()
 	}
 
+	fmt.Println()
+
 	// for-range in map
+	person := map[string]string{"firstName": "Yaser", "lastName": "Sharifi", "email": "yassersharifi74@gmail.com"}
+	for key, value := range person {
+		fmt.Printf("%s => %s", key, value)
+		fmt.Println()
+	}
+
+	fmt.Println()
+
 
 	fmt.Println()
 	fmt.Println("End of loops in golang")
