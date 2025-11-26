@@ -42,7 +42,6 @@ func main() {
 
 	fmt.Println()
 
-
 	fmt.Println()
 	fmt.Println("End of loops in golang")
 	fmt.Println("-----------------")

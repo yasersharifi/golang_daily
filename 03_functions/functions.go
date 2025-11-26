@@ -19,13 +19,30 @@ func main() {
 	// Named return values
 	sumMines(4, 2)
 
+	fmt.Println()
+
 	// Variadic functions
+	variadicSumResult := variadicSum(2, 3, 4, 5, 6, 8, 9)
+	fmt.Printf("Variadic Sum Result: %d", variadicSumResult)
+	fmt.Println()
+
+	log("Error", "failed to initial project", "failed to connect DB")
 
 	// Anonymous functions
 
 	// Functions closure
 
-	//
+	// Higher-order functions (passing funcs as args, returning funcs)
+
+	// Methods (value vs pointer receivers)
+
+	// Interfaces with function behaviors
+
+	// Error handling patterns (wrapping, sentinel errors)
+
+	// Generics and type parameters (Go 1.18+)
+
+	// Defer, panic, recover inside functions
 
 	// Built-in Functions
 
@@ -53,4 +70,20 @@ func sumMines(a int, b int) (sum int, mines int) {
 	m := a - b
 
 	return s, m
+}
+
+// Variadic function
+func variadicSum(nums ...int) int {
+	total := 0
+	for _, n := range nums {
+		total += n
+	}
+	return total
+}
+
+func log(level string, messages ...string) {
+	for _, msg := range messages {
+		fmt.Printf("[%s] - %s", level, msg)
+		fmt.Println()
+	}
 }
